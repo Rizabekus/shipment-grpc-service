@@ -36,6 +36,7 @@ func (u *ShipmentUsecase) CreateShipment(s *shipment.Shipment) error {
 }
 
 func (u *ShipmentUsecase) AddEvent(ref int64, newStatus shipment.Status) error {
+
 	s, err := u.shipmentRepo.Get(ref)
 	if err != nil {
 		return err

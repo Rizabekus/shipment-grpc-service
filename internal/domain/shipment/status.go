@@ -3,11 +3,11 @@ package shipment
 type Status string
 
 const (
-	Pending   Status = "pending"
-	PickedUp  Status = "picked_up"
-	InTransit Status = "in_transit"
-	Delivered Status = "delivered"
-	Completed Status = "completed"
+	Pending   Status = "PENDING"
+	PickedUp  Status = "PICKED_UP"
+	InTransit Status = "IN_TRANSIT"
+	Delivered Status = "DELIVERED"
+	Completed Status = "COMPLETED"
 )
 
 var validTransitions = map[Status][]Status{

@@ -22,6 +22,7 @@ type Shipment struct {
 }
 
 func (s *Shipment) AddEvent(newStatus Status) error {
+
 	valid := false
 	for _, st := range validTransitions[s.CurrentStatus] {
 		if st == newStatus {
@@ -30,11 +31,13 @@ func (s *Shipment) AddEvent(newStatus Status) error {
 		}
 	}
 	if !valid {
+
 		return ErrInvalidStatusTransition
 	}
 
 	event := ShipmentEvent{Status: newStatus, Timestamp: time.Now()}
 	s.Events = append(s.Events, event)
 	s.CurrentStatus = newStatus
+
 	return nil
 }
