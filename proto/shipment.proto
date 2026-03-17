@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package shipment;
+option go_package = "github.com/Rizabekus/shipment-grpc-service/proto/shipment;shipment";
+import "google/protobuf/timestamp.proto";
+
+message Shipment {
+  int64 reference_number = 1;
+  string origin = 2;
+  string destination = 3;
+  string current_status = 4;
+  string details = 5;
+  int64 amount = 6;
+  int64 driver_revenue = 7;
+  repeated ShipmentEvent events = 8;
+}
+
+message ShipmentEvent {
+  string status = 1;
+  google.protobuf.Timestamp timestamp = 2;
+}
+
+
+
+message CreateShipmentRequest {
+  int64 reference_number = 1;
+  string origin = 2;
+  string destination = 3;
+  string details = 4;
+  int64 amount = 5;
+  int64 driver_revenue = 6;
+}
+
+message GetShipmentRequest {
+  int64 reference_number = 1;
+}
+
+message AddShipmentEventRequest {
+  int64 reference_number = 1;
+  string status = 2;
+}
+
+message GetShipmentEventsRequest {
+  int64 reference_number = 1;
+}
+
+
+
+message ShipmentResponse {
+  Shipment shipment = 1;
+}
+
+message ShipmentEventResponse {
+  ShipmentEvent event = 1;
+}
+
+message GetShipmentEventsResponse {
+  repeated ShipmentEvent events = 1;
+}
+
+service ShipmentService {
+  rpc CreateShipment (CreateShipmentRequest) returns (ShipmentResponse);
+  rpc GetShipment (GetShipmentRequest) returns (ShipmentResponse);
+  rpc AddShipmentEvent (AddShipmentEventRequest) returns (ShipmentEventResponse);
+  rpc GetShipmentEvents (GetShipmentEventsRequest) returns (GetShipmentEventsResponse);
+}
