@@ -3,6 +3,7 @@ package shipment
 import "time"
 
 type ShipmentEvent struct {
-	Status    Status
-	Timestamp time.Time
+	ShipmentID int64
+	Status     Status
+	Timestamp  time.Time
 }
