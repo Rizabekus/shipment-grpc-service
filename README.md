@@ -39,3 +39,7 @@ Clean Architecture was chosen to ensure separation of concerns and testability
 I assumed that the shipment statuses should include: "PENDING" -> "PICKED_UP" -> "IN_TRANSIT" -> "DELIVERED" -> "COMPLETED"
 
 Also I assumed that the statuses should be updated according to specific order without jumping over more than 1 step ahead
+
+## 6. TODO
+
+Add validations, add postgres, cover with unit and integration tests, add proper error handling manager and logger packages
